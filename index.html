@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<!--Barbara Simonsen Homework 1 -->
+
+<html>
+<head>
+  <title>Number Form</title>
+  <meta charset="utf-8">
+</head>
+
+<body>
+  <header>  
+    <h1>Number Form</h1>
+  </header>
+
+  <form name="numberForm">
+    <label>
+      Enter number here:
+      <input type="number" step="any" name="numberToSum" id="input" >
+      <input type="submit" value="Submit" name="submit" onclick="calculate();">
+      <input type="submit" value="Clear" name="clear" onclick="clearForm();">
+    </label>
+    <h3>
+      Count: 
+      <div>
+        <input type="number" name="countNumbers" id="countNumbers"/>
+      </div>
+    </h3>
+    <h3>
+      Sum: 
+      <div>
+        <input type="number" step="any" name="sumNumbers" id="sumNumbers"/>
+      </div>
+    </h3>
+    <h3>
+      Average: 
+      <div>
+        <input type="number" step="any" name="aveNumbers" id="aveNumbers"/>
+      </div>
+    </h3>
+  </form>
+  
+  <script type="text/javascript">
+  
+    function calculate()
+    {
+      console.log(document.numberForm.numberToSum.value);
+      var Numb = document.numberForm.numberToSum.value;
+      var countNumb = document.numberForm.countNumbers.value;
+      var sumNumb = document.numberForm.sumNumbers.value; 
+      var outCount = Number(countNumb) + 1;
+      var outSum = Number(sumNumb) + Number(Numb)
+      var outAve = Number(outSum/outCount);
+      console.log("outCount="+outCount+", outSum="+outSum+", outAve="+outAve);
+
+      document.getElementById("countNumbers").value = outCount;
+      document.getElementById("sumNumbers").value = outSum;
+      document.getElementById("aveNumbers").value =  outAve;
+
+      event.preventDefault();
+    }
+
+    function clearForm()
+    {
+      document.getElementById("countNumbers").value = 0;
+      document.getElementById("sumNumbers").value = 0;
+      document.getElementById("aveNumbers").value =  0;
+
+      event.preventDefault();
+    }
+  
+  </script>
+</body>
+</html>
