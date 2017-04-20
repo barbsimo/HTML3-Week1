@@ -6,6 +6,60 @@
 <head>
   <title>Number Form</title>
   <meta charset="utf-8">
+  <script src="jquery-3.2.1.js"></script>
+  <script type="text/javascript">
+  
+    function calculate()
+    {
+     // console.log(document.numberForm.numberToSum.value);
+      console.log( $('#numberToSum').val() );
+      var numb = $('#numberToSum').val();
+      //document.numberForm.numberToSum.value;
+      var countNumb = $('#countNumbers').val();
+      //document.numberForm.countNumbers.value;
+      var sumNumb = $('#sumNumbers').val();
+      //document.numberForm.sumNumbers.value; 
+      var outCount = Number(countNumb) + 1;
+      if (isNaN(numb)) {
+        var outSum = sumNumb + numb;
+        var outAve = "No average for strings";
+      }
+      else {
+        var outSum = Number(sumNumb) + Number(numb);
+        if (outCount > 0) {
+          var outAve = Number(outSum/outCount);
+        }
+        else {
+          outAve = undefined;
+        }
+      }
+      console.log("outCount="+outCount+", outSum="+outSum+", outAve="+outAve);
+
+      $('#countNumbers').val(outCount);
+      $('#sumNumbers').val(outSum);
+      $('#aveNumbers').val(outAve);
+      //document.getElementById("countNumbers").value = outCount;
+      //document.getElementById("sumNumbers").value = outSum;
+      //document.getElementById("aveNumbers").value =  outAve;
+
+      event.preventDefault();
+    }
+
+    function clearForm()
+    {
+      $('#numberToSum').val("");
+      $('#countNumbers').val("");
+      $('#sumNumbers').val("");
+      $('#aveNumbers').val("");
+      //document.getElementById("countNumbers").value = "";
+      //document.getElementById("sumNumbers").value = "";
+      //document.getElementById("aveNumbers").value = "";
+
+      event.preventDefault();
+    }
+  
+  </script>
+ 
 </head>
 
 <body>
@@ -15,60 +69,33 @@
 
   <form name="numberForm">
     <label>
-      Enter number here:
-      <input type="number" step="any" name="numberToSum" id="input" >
+      Enter number or string here:
+      <input type="text" name="numberToSum" id="numberToSum" >
       <input type="submit" value="Submit" name="submit" onclick="calculate();">
       <input type="submit" value="Clear" name="clear" onclick="clearForm();">
     </label>
     <h3>
       Count: 
       <div>
-        <input type="number" name="countNumbers" id="countNumbers"/>
+        <input type="text" name="countNumbers" id="countNumbers"/>
       </div>
     </h3>
     <h3>
       Sum: 
       <div>
-        <input type="number" step="any" name="sumNumbers" id="sumNumbers"/>
+        <input type="text" name="sumNumbers" id="sumNumbers"/>
       </div>
     </h3>
     <h3>
       Average: 
       <div>
-        <input type="number" step="any" name="aveNumbers" id="aveNumbers"/>
+        <input type="text" name="aveNumbers" id="aveNumbers"/>
       </div>
     </h3>
   </form>
   
-  <script type="text/javascript">
   
-    function calculate()
-    {
-      console.log(document.numberForm.numberToSum.value);
-      var Numb = document.numberForm.numberToSum.value;
-      var countNumb = document.numberForm.countNumbers.value;
-      var sumNumb = document.numberForm.sumNumbers.value; 
-      var outCount = Number(countNumb) + 1;
-      var outSum = Number(sumNumb) + Number(Numb)
-      var outAve = Number(outSum/outCount);
-      console.log("outCount="+outCount+", outSum="+outSum+", outAve="+outAve);
-
-      document.getElementById("countNumbers").value = outCount;
-      document.getElementById("sumNumbers").value = outSum;
-      document.getElementById("aveNumbers").value =  outAve;
-
-      event.preventDefault();
-    }
-
-    function clearForm()
-    {
-      document.getElementById("countNumbers").value = 0;
-      document.getElementById("sumNumbers").value = 0;
-      document.getElementById("aveNumbers").value =  0;
-
-      event.preventDefault();
-    }
-  
-  </script>
+   
+ 
 </body>
 </html>
